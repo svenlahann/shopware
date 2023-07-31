@@ -92,6 +92,9 @@ hooks:
         # Remove hashtag to enable fastly
         # mv config/packages/fastly.yaml.dist config/packages/fastly.yaml
 
+        bin/console assets:install --no-debug
+        bin/console cache:clear
+
     deploy: |
         set -e
 
@@ -151,6 +154,9 @@ hooks:
         fi
 
         ./setup-fastly.sh
+        
+        bin/console assets:install --no-debug
+        bin/console cache:clear
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
