@@ -172,12 +172,9 @@ mounts:
     "/files":
         source: local
         source_path: "files"
-    "/public/media":
+    "/public":
         source: local
-        source_path: "public/media"
-    "/public/thumbnail":
-        source: local
-        source_path: "public/thumbnail"
+        source_path: "public"
     "/config/secrets":
         source: local
         source_path: "config/secrets"
