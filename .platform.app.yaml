@@ -172,9 +172,15 @@ mounts:
     "/files":
         source: local
         source_path: "files"
-    "/public":
+    "/public/bundles":
         source: local
-        source_path: "public"
+        source_path: "public/bundles"    
+    "/public/media":
+        source: local
+        source_path: "public/media"
+    "/public/thumbnail":
+        source: local
+        source_path: "public/thumbnail"
     "/config/secrets":
         source: local
         source_path: "config/secrets"
@@ -204,12 +210,14 @@ mounts:
 web:
     locations:
         "/":
-            scripts: true
-            allow: true
             # The public directory of the app, relative to its root.
             root: "public"
             # The front-controller script to send non-static requests to.
-            passthru: "/index.php"           
+            passthru: "/index.php"
+            expires: 24h
+            rules:
+                \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|cast|mp4|json|yaml|ico|svg?|cast|mp4|json|yaml|svg?|ttf)$:
+                    expires: 4w
 
 workers:
     queue:
